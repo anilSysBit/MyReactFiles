@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Context1, MyContext } from './Context1';
+import Practice2 from './Practice2';
 
 const Practice1 = () => {
   return (
-    <>
-    <h1>This is react first App</h1>
-    </>
+    <Context1>
+        <Practice2/>
+    </Context1>
   )
 }
 
