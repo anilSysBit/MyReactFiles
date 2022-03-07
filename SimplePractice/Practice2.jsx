@@ -1,8 +1,12 @@
 import React from 'react';
-import { useContext,useRef, useEffect } from 'react';
-import { MyContext } from './Context1';
+import { useContext,useRef, useEffect ,useState} from 'react';
+import { Context1, MyContext } from './Context1';
 
 const Practice2 = () => {
+
+    const [error,setError] = useState("");
+
+    
     const myRef = useRef();
     const myContext = useContext(MyContext);
 
@@ -18,16 +22,34 @@ const Practice2 = () => {
             myContext.addPlayer(inputText)
         }
 
+        myRef.current.value = "";
     }
     const checkValidation =(inputText)=>{
         if(inputText === ""){
+            setError("No written yet");
+            myContext.state.status = false;
             return false;
         }
         else if(inputText.length <= 2){
+            setError("Word less than 3 word");
+            myContext.state.status = false;
             return false;
         }
+        myContext.state.status = true;
         return true;
+        
     }
+
+    const ErrorFolder =()=>{
+        return(
+            <>
+            <div className="errorContainer">
+                <h1>{error}</h1>
+                </div>
+            </>
+        )
+    }
+
   return (
     <>
     <div className="container">
@@ -36,9 +58,11 @@ const Practice2 = () => {
             <input type="text" ref={myRef} />
             <button>Submit</button>
             </form>
+            {myContext.state.status ? null : <ErrorFolder/>}
         </div>
     </>
   )
 }
+
 
 export default Practice2
