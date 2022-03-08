@@ -17,11 +17,18 @@ class Context1 extends Component {
             playersName:[...prevState.playersName,newName]
         }))
     }
+
+    removePlayerHandler = (idx) =>{
+        let removedPlayer = this.state.playersName;
+        removedPlayer.splice(idx,1)
+        this.setState({playersName:removedPlayer})
+    }
   render() {
     return (
       <MyContext.Provider value={{
           state:this.state,
-          addPlayer:this.addPlayerOnStateHandler
+          addPlayer:this.addPlayerOnStateHandler,
+          removePlayer: this.removePlayerHandler
       }}>
           {this.props.children}
       </MyContext.Provider>
