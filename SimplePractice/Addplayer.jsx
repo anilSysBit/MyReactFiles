@@ -23,7 +23,6 @@ const Addplayer = () => {
                 <span key={index} style={ListStyle}>
             <li key={index}>{item}</li>
             <button style={buttonCross} onClick={()=>{myContext.removePlayer(index)}}>x</button>
-            <hr style={{position:"absolute",bottom:"0"}}/>
                 </span>
             )})}
     </ul>
@@ -31,4 +30,4 @@ const Addplayer = () => {
   )
 }
 
-export default Addplayer
+export default React.memo(Addplayer);

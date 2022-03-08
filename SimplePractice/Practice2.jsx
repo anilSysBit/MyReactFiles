@@ -65,4 +65,4 @@ const Practice2 = () => {
 }
 
 
-export default Practice2
+export default React.memo(Practice2);
