@@ -8,7 +8,9 @@ class Context1 extends Component {
         this.state = {
             status:false,
             playersName:[],
-            result:""
+            result:"",
+            showToaster:false,
+            toastTerInterval:false
         }
     }
 
@@ -23,12 +25,26 @@ class Context1 extends Component {
         removedPlayer.splice(idx,1)
         this.setState({playersName:removedPlayer})
     }
+
+    toasterState = (value) =>{
+        this.setState({
+            showToaster:value
+        })
+    }
+
+    toasterInterval = (value) =>{
+        this.setState({
+            toastTerInterval:value
+        })
+    }
   render() {
     return (
       <MyContext.Provider value={{
           state:this.state,
           addPlayer:this.addPlayerOnStateHandler,
-          removePlayer: this.removePlayerHandler
+          removePlayer: this.removePlayerHandler,
+          toasterState : this.toasterState,
+          toasterInterval: this.toasterInterval
       }}>
           {this.props.children}
       </MyContext.Provider>

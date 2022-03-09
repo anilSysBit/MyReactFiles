@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext,useRef, useEffect ,useState} from 'react';
 import { Context1, MyContext } from './Context1';
+import Toaster from './Toaster';
 
 const Practice2 = () => {
 
@@ -17,10 +18,16 @@ const Practice2 = () => {
         e.preventDefault();
         let inputText = myRef.current.value;
         let x = checkValidation(inputText);
+        myContext.toasterState(false);
         console.log(x);
         if(x){
-            myContext.addPlayer(inputText)
+            myContext.addPlayer(inputText);
+            // myContext.state.showToaster = true;
+            alert("you have registerd a player");
+            myContext.toasterState(true);
+
         }
+
 
         myRef.current.value = "";
     }
@@ -50,16 +57,20 @@ const Practice2 = () => {
         )
     }
 
+    const inputSelectHandler =()=>{
+        myContext.toasterState(false);
+    }
   return (
     <>
     <div className="container">
         <h1>Form Add players</h1>
         <form action="submit" onSubmit={InitPlayerHandler}>
-            <input type="text" ref={myRef} />
+            <input type="text" ref={myRef} onKeyPress={inputSelectHandler}/>
             <button>Submit</button>
             </form>
             {myContext.state.status ? null : <ErrorFolder/>}
         </div>
+        <Toaster/>
     </>
   )
 }
