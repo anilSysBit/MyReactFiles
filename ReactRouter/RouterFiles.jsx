@@ -11,6 +11,14 @@ import Contact from "./components/Contact"
 // for preventing this we have Link method on react router you can put your links inside the Link
 
 
+/*
+<Link to ={{
+  pathname:"/path",
+  hash:"#hashname",
+  search:"?true=enabled"
+}}
+*/
+
 const App = () => {
   return (
     <BrowserRouter>
