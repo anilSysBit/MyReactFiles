@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import reportWebVitals from './reportWebVitals';
-import Practice1 from "./SimplePractice/Practice1"
+import Practice1 from "./SimplePractice/Practice1";
+import App from "./App";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Practice1/>
+    {/* <Practice1/> */}
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
